@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Startup Prediction</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+
+min-height:100vh;
+
+background:linear-gradient(135deg,#1f4037,#99f2c8);
+
+}
+
+/* NAVBAR */
+
+nav{
+
+width:100%;
+height:70px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 60px;
+
+background:rgba(0,0,0,0.3);
+color:white;
+
+}
+
+.logo{
+
+font-size:24px;
+font-weight:600;
+
+}
+
+.nav-buttons a{
+text-decoration:none;
+}
+
+.nav-buttons button{
+
+margin-left:15px;
+
+padding:10px 22px;
+
+border:none;
+border-radius:30px;
+
+background:#00c6ff;
+
+color:white;
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.nav-buttons button:hover{
+
+background:#0072ff;
+transform:scale(1.05);
+
+}
+
+/* FORM CARD */
+
+.container{
+
+height:85vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.card{
+
+background:white;
+
+padding:40px;
+
+border-radius:12px;
+
+width:400px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+text-align:center;
+
+}
+
+.card h2{
+
+margin-bottom:20px;
+
+}
+
+input{
+
+width:100%;
+
+padding:12px;
+
+margin:10px 0;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+}
+
+.predict-btn{
+
+width:100%;
+
+padding:12px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:25px;
+
+background:#0072ff;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.predict-btn:hover{
+
+background:#0048ff;
+
+}
+
+.result{
+
+margin-top:20px;
+
+font-size:20px;
+
+color:green;
+
+font-weight:600;
+
+}
+
+.bottom-buttons{
+
+margin-top:20px;
+
+}
+
+.bottom-buttons button{
+
+padding:10px 20px;
+
+margin:5px;
+
+border:none;
+
+border-radius:25px;
+
+background:#2c3e50;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.bottom-buttons button:hover{
+
+background:black;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Startup AI Predictor
+</div>
+
+<div class="nav-buttons">
+
+<a href="/">
+<button>Home</button>
+</a>
+
+<a href="/description">
+<button>Description</button>
+</a>
+
+</div>
+
+</nav>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>Startup Success Prediction</h2>
+
+<form action="/predict" method="post">
+
+<input type="number" step="any" name="funding_total_usd" placeholder="Funding Total USD" required>
+
+<input type="number" step="any" name="relationships" placeholder="Relationships" required>
+
+<input type="number" step="any" name="age_first_funding_year" placeholder="Age First Funding Year" required>
+
+<input type="number" step="any" name="avg_participants" placeholder="Average Participants" required>
+
+<button class="predict-btn" type="submit">
+Predict Success Rate
+</button>
+
+</form>
+
+{% if prediction_text %}
+
+<div class="result">
+{{ prediction_text }}
+</div>
+
+<div class="bottom-buttons">
+
+<a href="/startup">
+<button>Predict Again</button>
+</a>
+
+<a href="/">
+<button>Return Home</button>
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>
